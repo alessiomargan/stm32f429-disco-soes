@@ -80,6 +80,8 @@ void Error_Handler(void);
 #define ECAT_SPI_MISO_GPIO_Port GPIOE
 #define ECAT_SPI_MOSI_Pin GPIO_PIN_6
 #define ECAT_SPI_MOSI_GPIO_Port GPIOE
+#define EE_LOAD_Pin GPIO_PIN_13
+#define EE_LOAD_GPIO_Port GPIOC
 #define PC14_OSC32_IN_Pin GPIO_PIN_14
 #define PC14_OSC32_IN_GPIO_Port GPIOC
 #define PC15_OSC32_OUT_Pin GPIO_PIN_15

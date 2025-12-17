@@ -6,7 +6,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2025 STMicroelectronics.
+  * Copyright (c) 2023 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "user_code.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -31,7 +31,6 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -105,13 +104,14 @@ int main(void)
   MX_SPI4_Init();
   MX_TIM7_Init();
   /* USER CODE BEGIN 2 */
-
+  user_code_init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    user_code_loop();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -361,7 +361,6 @@ static void MX_GPIO_Init(void)
 {
   GPIO_InitTypeDef GPIO_InitStruct = {0};
   /* USER CODE BEGIN MX_GPIO_Init_1 */
-
   /* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
@@ -404,6 +403,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
   HAL_GPIO_Init(ECAT_CS_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : EE_LOAD_Pin */
+  GPIO_InitStruct.Pin = EE_LOAD_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  HAL_GPIO_Init(EE_LOAD_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : A0_Pin A1_Pin A2_Pin A3_Pin
                            A4_Pin A5_Pin SDNRAS_Pin A6_Pin
@@ -642,7 +647,6 @@ static void MX_GPIO_Init(void)
   HAL_NVIC_EnableIRQ(EXTI3_IRQn);
 
   /* USER CODE BEGIN MX_GPIO_Init_2 */
-
   /* USER CODE END MX_GPIO_Init_2 */
 }
 

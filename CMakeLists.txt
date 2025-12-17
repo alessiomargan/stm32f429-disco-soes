@@ -69,7 +69,7 @@ set(link_DIRS)
 set(link_LIBS)
 
 # Linker script (explicit)
-set(linker_script_SRC ${CMAKE_CURRENT_SOURCE_DIR}/stm32f429xi_flash.ld)
+set(linker_script_SRC ${CMAKE_CURRENT_SOURCE_DIR}/STM32F429ZITX_FLASH.ld)
 
 # Compiler options
 set(compiler_OPTS)

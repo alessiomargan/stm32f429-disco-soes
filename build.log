@@ -1,0 +1,57 @@
+[1/2] Cleaning additional files...
+[2/2] Cleaning all built files...
+Cleaning... 40 files.
+[1/40] Building ASM object CMakeFiles/stm32f429-disco-soes.dir/startup_stm32f429xx.s.obj
+[2/40] Building C object CMakeFiles/stm32f429-disco-soes.dir/Core/Src/sysmem.c.obj
+[3/40] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32f4xx.c.obj
+[4/40] Building C object CMakeFiles/stm32f429-disco-soes.dir/Core/Src/syscalls.c.obj
+[5/40] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c.obj
+[6/40] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c.obj
+[7/40] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_crc.c.obj
+[8/40] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c.obj
+[9/40] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c.obj
+[10/40] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c.obj
+[11/40] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c.obj
+[12/40] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c.obj
+[13/40] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c.obj
+[14/40] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c.obj
+[15/40] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c.obj
+[16/40] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c.obj
+[17/40] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c.obj
+[18/40] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/home/amargan/work/code/firmware/SOES/soes/ecat_slv.c.obj
+/home/amargan/work/code/firmware/SOES/soes/ecat_slv.c: In function 'ecat_slv_init':
+/home/amargan/work/code/firmware/SOES/soes/ecat_slv.c:374:4: warning: implicit declaration of function 'bootstrap_foe_init' [-Wimplicit-function-declaration]
+  374 |    bootstrap_foe_init ();
+      |    ^~~~~~~~~~~~~~~~~~
+[19/40] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c.obj
+[20/40] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/home/amargan/work/code/firmware/SOES/soes/esc.c.obj
+[21/40] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/home/amargan/work/code/firmware/SOES/soes/hal/advr_esc/esc_hw_et1100.c.obj
+[22/40] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/home/amargan/work/code/firmware/uc_test/common_src/soes_test/objectlist.c.obj
+[23/40] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/home/amargan/work/code/firmware/SOES/soes/esc_eep.c.obj
+[24/40] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/home/amargan/work/code/firmware/uc_test/common_src/soes_test/globals.c.obj
+In file included from /home/amargan/work/code/firmware/uc_test/common_src/soes_test/globals.c:3:
+/home/amargan/work/code/firmware/uc_test/common_src/soes_test/include/build_info.h:13:2: warning: #warning "No Git tag found in the repository!" [-Wcpp]
+   13 | #warning "No Git tag found in the repository!"
+      |  ^~~~~~~
+[25/40] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/home/amargan/work/code/firmware/uc_test/common_src/soes_test/params.c.obj
+[26/40] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/home/amargan/work/code/firmware/SOES/soes/esc_foe.c.obj
+[27/40] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/home/amargan/work/code/firmware/SOES/soes/esc_eoe.c.obj
+[28/40] Building C object CMakeFiles/stm32f429-disco-soes.dir/Core/Src/stm32f4xx_hal_msp.c.obj
+[29/40] Building C object CMakeFiles/stm32f429-disco-soes.dir/Core/Src/stm32f4xx_it.c.obj
+[30/40] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/home/amargan/work/code/firmware/uc_test/common_src/soes_test/soes_hook.c.obj
+[31/40] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/home/amargan/work/code/firmware/SOES/soes/esc_coe.c.obj
+[32/40] Building C object CMakeFiles/stm32f429-disco-soes.dir/Core/Src/main.c.obj
+[33/40] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c.obj
+[34/40] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c.obj
+[35/40] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/home/amargan/work/code/firmware/SOES/soes/hal/advr_esc/hal_ec_STM32F4xx.c.obj
+[36/40] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c.obj
+[37/40] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/home/amargan/work/code/firmware/uc_test/stm32f4xx/soes_test/flash_utils.c.obj
+[38/40] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/home/amargan/work/code/firmware/uc_test/stm32f4xx/soes_test/user_code.c.obj
+[39/40] Building C object cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c.obj
+[40/40] Linking C executable stm32f429-disco-soes.elf
+Memory region         Used Size  Region Size  %age Used
+          CCMRAM:           0 B        64 KB      0.00%
+             RAM:        4680 B       192 KB      2.38%
+           FLASH:       36848 B         2 MB      1.76%
+   text	   data	    bss	    dec	    hex	filename
+  36728	    120	   4572	  41420	   a1cc	/home/amargan/work/code/firmware/stm32f429-disco-soes/build/Debug/stm32f429-disco-soes.elf

@@ -15,7 +15,7 @@ configure:
 	cmake --preset Debug
 
 build: configure
-	cmake --build $(BUILD_DIR)
+	cmake --build $(BUILD_DIR) --clean-first -- -v
 
 # Generate .bin from ELF (optional; objcopy already runs post-build, but kept for convenience)
 .PHONY: bin
