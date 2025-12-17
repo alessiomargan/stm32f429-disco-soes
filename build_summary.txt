@@ -1,0 +1,36 @@
+STM32F429 SOES Build Summary
+============================
+
+Env vars (defaults if unset):
+  GIT_SOES=/home/amargan/work/code/firmware/SOES
+  GIT_UC_TEST=/home/amargan/work/code/firmware/uc_test
+
+Integration layout:
+  - CubeMX auto content: cmake/stm32cubemx/CMakeLists.txt
+  - SOES/app wiring:     cmake/soes.cmake (included from top-level CMakeLists.txt)
+
+Sources pulled in:
+  SOES core: ecat_slv.c, esc.c, esc_coe.c, esc_eep.c, esc_eoe.c, esc_foe.c
+  SOES HAL:  hal/advr_esc/esc_hw_et1100.c, hal/advr_esc/hal_ec_STM32F4xx.c
+  App common: common_src/soes_test/globals.c, objectlist.c, params.c, soes_hook.c
+  App stm32f4: stm32f4xx/soes_test/user_code.c, flash_utils.c
+  Excluded: stm32f4xx/soes_test/can_code.c
+
+Include paths:
+  ${GIT_SOES}, ${GIT_SOES}/soes, ${GIT_SOES}/soes/include, ${GIT_SOES}/soes/include/sys/gcc,
+  ${GIT_SOES}/soes/hal/advr_esc, ${GIT_UC_TEST}/common_src/soes_test/include,
+  ${GIT_UC_TEST}/stm32f4xx/soes_test/include
+
+Handles exposed in main.h:
+  extern SPI_HandleTypeDef hspi4;
+  extern UART_HandleTypeDef huart1;
+  macro ecat_spi -> hspi4
+
+Build status (last run):
+  Success. ELF: build/Debug/stm32f429-disco-soes.elf
+  FLASH usage: ~37 KB of 2 MB
+
+Commands:
+  Configure: cmake --preset Debug
+  Build:     cmake --build build/Debug
+  Flash:     cmake --build build/Debug --target flash

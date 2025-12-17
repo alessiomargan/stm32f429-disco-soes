@@ -92,6 +92,9 @@ set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES OUTPUT_NAME ${PROJECT_ORI
 # Pull in STM32CubeMX-generated target setup (sources, includes, drivers)
 add_subdirectory(cmake/stm32cubemx)
 
+# Integrate SOES and application sources (kept separate from STM32CubeMX auto-gen)
+include(cmake/soes.cmake)
+
 # Add include paths
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
     ${include_DIRS}
