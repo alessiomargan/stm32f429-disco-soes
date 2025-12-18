@@ -1,0 +1,59 @@
+{
+	"name": "STM32F429 SOES Development",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"context": "."
+	},
+	
+	// Configure workspace - mount local folders for development
+	"workspaceFolder": "/workspace/stm32f429-disco-soes",
+	
+	// OPTION A: Mount local repos (for active development)
+	"workspaceMount": "source=${localWorkspaceFolder},target=/workspace/stm32f429-disco-soes,type=bind,consistency=cached",
+	"mounts": [
+		"source=${localWorkspaceFolder}/../uc_test,target=/workspace/uc_test,type=bind,consistency=cached",
+		"source=${localWorkspaceFolder}/../SOES,target=/workspace/SOES,type=bind,consistency=cached"
+	],
+	
+	// OPTION B: Clone repos from GitHub (current - for CI/CD or clean setup)
+	"initializeCommand": "echo 'Building devcontainer...'",
+
+	// Environment variables
+	"containerEnv": {
+		"GIT_SOES": "/workspace/SOES",
+		"GIT_UC_TEST": "/workspace/uc_test"
+	},
+
+	// VS Code customizations
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"cmake.configureOnOpen": false,
+				"C_Cpp.default.compilerPath": "/opt/arm-gnu-toolchain-13.3.rel1-x86_64-arm-none-eabi/bin/arm-none-eabi-gcc",
+				"C_Cpp.default.intelliSenseMode": "gcc-arm"
+			},
+			"extensions": [
+				"ms-vscode.cpptools",
+				"ms-vscode.cmake-tools",
+				"llvm-vs-code-extensions.vscode-clangd",
+				"stmicroelectronics.stm32-vscode-extension",
+				"stmicroelectronics.stm32cube-ide-clangd",
+				"stmicroelectronics.stm32cube-ide-build-cmake"
+			]
+		}
+	},
+
+	// Features to add to the dev container
+	"features": {
+		"ghcr.io/devcontainers/features/git:1": {}
+	},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "bash .devcontainer/setup-repos.sh",
+
+	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "vscode"
+}
