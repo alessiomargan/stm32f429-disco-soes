@@ -66,3 +66,22 @@ endif()
 if(TARGET STM32_Drivers)
     target_sources(STM32_Drivers PRIVATE ${SOES_SOURCES} ${UC_TEST_SOURCES})
 endif()
+
+# Pre-build step: generate build info
+if(TARGET ${CMAKE_PROJECT_NAME})
+    add_custom_command(TARGET ${CMAKE_PROJECT_NAME} PRE_BUILD
+        COMMAND /bin/bash ${GIT_UC_TEST}/common_src/gen_build_info.sh ${GIT_UC_TEST}/common_src/soes_test
+        COMMENT "Generating build info..."
+        VERBATIM
+    )
+endif()
+
+# Post-build step: copy firmware binary to ecat_master
+if(TARGET ${CMAKE_PROJECT_NAME})
+    add_custom_command(TARGET ${CMAKE_PROJECT_NAME} POST_BUILD
+        COMMAND mkdir -p $ENV{HOME}/.ecat_master/firmware
+        COMMAND cp ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_ORIGINAL_NAME}.bin $ENV{HOME}/.ecat_master/firmware/st_et1100.bin
+        COMMENT "Copying firmware to ~/.ecat_master/firmware/st_et1100.bin"
+        VERBATIM
+    )
+endif()

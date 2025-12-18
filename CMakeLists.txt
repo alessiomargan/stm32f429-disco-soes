@@ -106,6 +106,10 @@ target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
 # Add project symbols (macros)
 target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE
     ${symbols_SYMB}
+    ESC_DEBUG
+    USE_HAL_DRIVER
+    STM32F429xx
+    STM32
     $<$<COMPILE_LANGUAGE:C>: ${symbols_c_SYMB}>
     $<$<COMPILE_LANGUAGE:CXX>: ${symbols_cxx_SYMB}>
     $<$<COMPILE_LANGUAGE:ASM>: ${symbols_asm_SYMB}>

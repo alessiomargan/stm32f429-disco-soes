@@ -6,6 +6,8 @@ enable_language(C ASM)
 set(MX_Defines_Syms 
 	USE_HAL_DRIVER 
 	STM32F429xx
+	ESC_DEBUG
+	STM32
     $<$<CONFIG:Debug>:DEBUG>
 )
 
