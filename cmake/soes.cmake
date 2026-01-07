@@ -75,13 +75,3 @@ if(TARGET ${CMAKE_PROJECT_NAME})
         VERBATIM
     )
 endif()
-
-# Post-build step: copy firmware binary to ecat_master
-if(TARGET ${CMAKE_PROJECT_NAME})
-    add_custom_command(TARGET ${CMAKE_PROJECT_NAME} POST_BUILD
-        COMMAND mkdir -p $ENV{HOME}/.ecat_master/firmware
-        COMMAND cp ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_ORIGINAL_NAME}.bin $ENV{HOME}/.ecat_master/firmware/st_et1100.bin
-        COMMENT "Copying firmware to ~/.ecat_master/firmware/st_et1100.bin"
-        VERBATIM
-    )
-endif()

@@ -87,7 +87,7 @@ link_directories(${CMAKE_PROJECT_NAME} ${link_DIRS})
 add_executable(${CMAKE_PROJECT_NAME})
 
 # Add support for blank char as part of project name
-set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES OUTPUT_NAME ${PROJECT_ORIGINAL_NAME})
+set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES OUTPUT_NAME ${CMAKE_PROJECT_NAME})
 
 # Pull in STM32CubeMX-generated target setup (sources, includes, drivers)
 add_subdirectory(cmake/stm32cubemx)
@@ -148,7 +148,7 @@ target_link_options(${CMAKE_PROJECT_NAME} PRIVATE
     -T${linker_script_SRC}
     ${cpu_PARAMS}
     ${linker_OPTS}
-    -Wl,-Map=${PROJECT_ORIGINAL_NAME}.map
+    -Wl,-Map=${CMAKE_PROJECT_NAME}.map
     -u _printf_float # STDIO float formatting support (remove if not used)
     --specs=nosys.specs
     -Wl,--start-group
@@ -164,6 +164,9 @@ target_link_options(${CMAKE_PROJECT_NAME} PRIVATE
 # Execute post-build to print size, generate hex and bin
 add_custom_command(TARGET ${CMAKE_PROJECT_NAME} POST_BUILD
     COMMAND ${CMAKE_SIZE} $<TARGET_FILE:${CMAKE_PROJECT_NAME}>
-    COMMAND ${CMAKE_OBJCOPY} -O ihex $<TARGET_FILE:${CMAKE_PROJECT_NAME}> ${PROJECT_ORIGINAL_NAME}.hex
-    COMMAND ${CMAKE_OBJCOPY} -O binary $<TARGET_FILE:${CMAKE_PROJECT_NAME}> ${PROJECT_ORIGINAL_NAME}.bin
+    COMMAND ${CMAKE_OBJCOPY} -O ihex $<TARGET_FILE:${CMAKE_PROJECT_NAME}> ${CMAKE_PROJECT_NAME}.hex
+    COMMAND ${CMAKE_OBJCOPY} -O binary $<TARGET_FILE:${CMAKE_PROJECT_NAME}> ${CMAKE_PROJECT_NAME}.bin
+    COMMAND ${CMAKE_COMMAND} -E make_directory $ENV{HOME}/.ecat_master/firmware
+    COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_PROJECT_NAME}.bin $ENV{HOME}/.ecat_master/firmware/st_et1100.bin
+    COMMENT "Copying firmware to ~/.ecat_master/firmware/st_et1100.bin"
 )
