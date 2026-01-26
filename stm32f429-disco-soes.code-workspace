@@ -2,15 +2,6 @@
 	"folders": [
 		{
 			"path": "."
-		},
-		{
-			"path": "../uc_test/common_src/soes_test"
-		},
-		{
-			"path": "../uc_test/stm32f4xx"
-		},
-		{
-			"path": "../SOES/soes"
 		}
 	],
 	"settings": {

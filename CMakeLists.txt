@@ -167,6 +167,6 @@ add_custom_command(TARGET ${CMAKE_PROJECT_NAME} POST_BUILD
     COMMAND ${CMAKE_OBJCOPY} -O ihex $<TARGET_FILE:${CMAKE_PROJECT_NAME}> ${CMAKE_PROJECT_NAME}.hex
     COMMAND ${CMAKE_OBJCOPY} -O binary $<TARGET_FILE:${CMAKE_PROJECT_NAME}> ${CMAKE_PROJECT_NAME}.bin
     COMMAND ${CMAKE_COMMAND} -E make_directory $ENV{HOME}/.ecat_master/firmware
+    COMMAND ${CMAKE_COMMAND} -E echo "Copying firmware to ~/.ecat_master/firmware/st_et1100.bin"
     COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_PROJECT_NAME}.bin $ENV{HOME}/.ecat_master/firmware/st_et1100.bin
-    COMMENT "Copying firmware to ~/.ecat_master/firmware/st_et1100.bin"
 )

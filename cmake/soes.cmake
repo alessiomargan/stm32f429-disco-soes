@@ -5,7 +5,7 @@ if(NOT DEFINED GIT_SOES)
     set(GIT_SOES "$ENV{GIT_SOES}")
     if(NOT GIT_SOES)
         message(STATUS "GIT_SOES not set, using default path")
-        set(GIT_SOES "/home/amargan/work/code/firmware/SOES")
+        set(GIT_SOES "${CMAKE_SOURCE_DIR}/external/soes")
     endif()
 endif()
 message(STATUS "GIT_SOES: ${GIT_SOES}")
@@ -14,7 +14,7 @@ if(NOT DEFINED GIT_UC_TEST)
     set(GIT_UC_TEST "$ENV{GIT_UC_TEST}")
     if(NOT GIT_UC_TEST)
         message(STATUS "GIT_UC_TEST not set, using default path")
-        set(GIT_UC_TEST "/home/amargan/work/code/firmware/uc_test")
+        set(GIT_UC_TEST "${CMAKE_SOURCE_DIR}/external/uc_test")
     endif()
 endif()
 message(STATUS "GIT_UC_TEST: ${GIT_UC_TEST}")
@@ -67,11 +67,25 @@ if(TARGET STM32_Drivers)
     target_sources(STM32_Drivers PRIVATE ${SOES_SOURCES} ${UC_TEST_SOURCES})
 endif()
 
-# Pre-build step: generate build info
+# Generate build info into build directory before compilation
+set(BUILD_INFO_DIR ${CMAKE_BINARY_DIR}/generated)
+set(BUILD_INFO_HEADER ${BUILD_INFO_DIR}/include/build_info.h)
+
+add_custom_command(
+    OUTPUT ${BUILD_INFO_HEADER}
+    COMMAND /bin/bash ${GIT_UC_TEST}/common_src/gen_build_info.sh ${BUILD_INFO_DIR}
+    COMMENT "Generating build info..."
+    VERBATIM
+    DEPENDS ${GIT_UC_TEST}/common_src/gen_build_info.sh
+)
+
+add_custom_target(generate_build_info DEPENDS ${BUILD_INFO_HEADER})
+
 if(TARGET ${CMAKE_PROJECT_NAME})
-    add_custom_command(TARGET ${CMAKE_PROJECT_NAME} PRE_BUILD
-        COMMAND /bin/bash ${GIT_UC_TEST}/common_src/gen_build_info.sh ${GIT_UC_TEST}/common_src/soes_test
-        COMMENT "Generating build info..."
-        VERBATIM
-    )
+    add_dependencies(${CMAKE_PROJECT_NAME} generate_build_info)
+endif()
+
+# Add generated include directory
+if(TARGET stm32cubemx)
+    target_include_directories(stm32cubemx INTERFACE ${BUILD_INFO_DIR}/include)
 endif()
