@@ -5,24 +5,11 @@
 		"context": "."
 	},
 	
-	// Configure workspace - mount local folders for development
+	// Configure workspace
 	"workspaceFolder": "/workspace/stm32f429-disco-soes",
-	
-	// OPTION A: Mount local repos (for active development)
 	"workspaceMount": "source=${localWorkspaceFolder},target=/workspace/stm32f429-disco-soes,type=bind,consistency=cached",
-	"mounts": [
-		"source=${localWorkspaceFolder}/../uc_test,target=/workspace/uc_test,type=bind,consistency=cached",
-		"source=${localWorkspaceFolder}/../SOES,target=/workspace/SOES,type=bind,consistency=cached"
-	],
 	
-	// OPTION B: Clone repos from GitHub (current - for CI/CD or clean setup)
 	"initializeCommand": "echo 'Building devcontainer...'",
-
-	// Environment variables
-	"containerEnv": {
-		"GIT_SOES": "/workspace/SOES",
-		"GIT_UC_TEST": "/workspace/uc_test"
-	},
 
 	// VS Code customizations
 	"customizations": {

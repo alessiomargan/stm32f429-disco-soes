@@ -27,7 +27,8 @@ $(BIN): $(ELF)
 # Flash via stlink-tools (st-flash)
 .PHONY: flash
 flash: $(BIN)
-	st-flash write $(BIN) 0x08000000
+	# st-flash write $(BIN) 0x08000000
+	st-flash write $(BIN) 0x08020000
 
 # Flash via OpenOCD (uses ELF; requires openocd in PATH)
 .PHONY: flash-openocd

@@ -18,7 +18,19 @@ This devcontainer provides a complete, reproducible development environment for 
 1. Install Docker Desktop (or Docker Engine + Docker Compose)
 2. Install VS Code extension: "Dev Containers" (ms-vscode-remote.remote-containers)
 3. Open this project folder in VS Code
-4. When prompted, click "Reopen in Container" (or use Command Palette: `Dev Containers: Reopen in Container`)
+4. When prompted, click "Reopen in Container" (or use Command Palette: Dev Containers: Reopen in Container)
+
+### Repositories and Submodules
+
+- Only the main workspace is mounted: `/workspace/stm32f429-disco-soes`.
+- External sources are submodules located under `external/soes` and `external/uc_test`.
+- The postCreate command runs `.devcontainer/setup-repos.sh`, which performs `git submodule update --init --recursive` and checks out the expected branches (`main_advr` for SOES, `soes_main` for uc_test).
+
+If you rebuild without the postCreate hook, run the helper manually inside the container:
+
+```bash
+bash .devcontainer/setup-repos.sh
+```
 
 ### Building the Project
 
@@ -33,20 +45,6 @@ cmake --build build/Debug
 
 # Or use the VS Code CMake Tools extension
 ```
-
-### Multi-Root Workspace
-
-The devcontainer automatically mounts all required workspace folders:
-- `/workspace/stm32f429-disco-soes` (main project)
-- `/workspace/uc_test` (test sources)
-- `/workspace/SOES` (SOES library)
-
-### Environment Variables
-
-- `GIT_SOES=/workspace/SOES`
-- `GIT_UC_TEST=/workspace/uc_test`
-
-These are automatically set and match the paths expected by cmake/soes.cmake
 
 ## Troubleshooting
 
