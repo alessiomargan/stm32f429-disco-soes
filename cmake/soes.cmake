@@ -71,15 +71,18 @@ endif()
 set(BUILD_INFO_DIR ${CMAKE_BINARY_DIR}/generated)
 set(BUILD_INFO_HEADER ${BUILD_INFO_DIR}/include/build_info.h)
 
-add_custom_command(
-    OUTPUT ${BUILD_INFO_HEADER}
-    COMMAND /bin/bash ${GIT_UC_TEST}/common_src/gen_build_info.sh ${BUILD_INFO_DIR}
+# Refresh metadata before each build and order every consumer after generation.
+add_custom_target(generate_build_info
+    COMMAND /bin/bash "${GIT_UC_TEST}/common_src/gen_build_info.sh" "${BUILD_INFO_DIR}"
+    BYPRODUCTS "${BUILD_INFO_HEADER}"
+    WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
     COMMENT "Generating build info..."
     VERBATIM
-    DEPENDS ${GIT_UC_TEST}/common_src/gen_build_info.sh
 )
 
-add_custom_target(generate_build_info DEPENDS ${BUILD_INFO_HEADER})
+if(TARGET STM32_Drivers)
+    add_dependencies(STM32_Drivers generate_build_info)
+endif()
 
 if(TARGET ${CMAKE_PROJECT_NAME})
     add_dependencies(${CMAKE_PROJECT_NAME} generate_build_info)

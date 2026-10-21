@@ -1,0 +1,7 @@
+{
+    "cmake.cmakePath": "cube-cmake",
+    "cmake.environment": {
+        "PATH": "/path/to/your/stm32/toolchain/bin:${env:PATH}"
+    },
+    "C_Cpp.intelliSenseEngine": "Default"
+}
